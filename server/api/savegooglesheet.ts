@@ -38,12 +38,8 @@ async function writeData(spreadsheetId, range, values) {
 export default defineEventHandler(async (event) => {
     let body = await readBody(event);
     console.log("saving google sheet") 
-    console.log(body.celldata);
-
     let range = 'Sheet1!A1'; // Specify the starting cell for writing data
     let spreadsheetId = '1Kdb97aoBOAdKDCZJCs9KmZy8J2sDytpYkeol7NfB0Vc';
-
-    // Format celldata into a 2D array for Google Sheets
     let formattedValues = [body.celldata]; // Wrap the single row in another array
 
     await writeData(spreadsheetId, range, formattedValues); // Pass formatted values
